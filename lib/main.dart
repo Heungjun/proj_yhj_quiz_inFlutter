@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yhj_quiz_flutter/controller/MyAppController.dart';
+import 'package:yhj_quiz_flutter/controller/QuizController.dart';
 import 'package:yhj_quiz_flutter/pages/HomePage.dart';
 import 'package:yhj_quiz_flutter/pages/QuizPage.dart';
 import 'package:yhj_quiz_flutter/pages/SettingPage.dart';
@@ -22,7 +23,13 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => HomePage()),
-        GetPage(name: '/quiz', page: () => QuizPage()),
+        GetPage(
+          name: '/quiz',
+          page: () => QuizPage(),
+          binding: BindingsBuilder(
+            () => Get.lazyPut<QuizController>(() => QuizController()),
+          ),
+        ),
         GetPage(name: '/setting', page: () => SettingPage()),
       ],
     );
