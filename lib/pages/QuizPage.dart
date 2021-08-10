@@ -24,7 +24,7 @@ class QuizPage extends GetView<QuizController> {
                       color: Colors.yellow,
                       child: Center(
                         child: Text(
-                          '문제 1. ${controller.quizzes[0].title}',
+                          '문제 ${controller.quizIndex + 1}. ${controller.title}',
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
@@ -42,75 +42,49 @@ class QuizPage extends GetView<QuizController> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              child: Text('1번. 1'),
-                              style: ElevatedButton.styleFrom(
-                                fixedSize: Size(
-                                  MyAppController.to.menuButtonWidth,
-                                  MyAppController.to.menuButtonHeight,
-                                ),
-                                primary: Colors.white,
-                                shadowColor: Colors.yellow,
-                                elevation: 10,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              child: Text('2번. 2'),
-                              style: ElevatedButton.styleFrom(
-                                fixedSize: Size(
-                                  MyAppController.to.menuButtonWidth,
-                                  MyAppController.to.menuButtonHeight,
-                                ),
-                                primary: Colors.yellow,
-                                shadowColor: Colors.yellow,
-                                elevation: 10,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              child: Text('3번. 1'),
-                              style: ElevatedButton.styleFrom(
-                                fixedSize: Size(
-                                  MyAppController.to.menuButtonWidth,
-                                  MyAppController.to.menuButtonHeight,
-                                ),
-                                primary: Colors.white,
-                                shadowColor: Colors.yellow,
-                                elevation: 10,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              child: Text('4번. 1'),
-                              style: ElevatedButton.styleFrom(
-                                fixedSize: Size(
-                                  MyAppController.to.menuButtonWidth,
-                                  MyAppController.to.menuButtonHeight,
-                                ),
-                                primary: Colors.white,
-                                shadowColor: Colors.yellow,
-                                elevation: 10,
-                              ),
-                            ),
-                          ),
+                          quizAnswerButton(1, controller.d1),
+                          quizAnswerButton(2, controller.d2),
+                          quizAnswerButton(3, controller.d3),
+                          quizAnswerButton(4, controller.d4),
                         ],
+                      ),
+                    ),
+                    SizedBox(height: MyAppController.to.sizedBoxHeight),
+                    Container(
+                      child: ElevatedButton(
+                        child: Text(controller.isLast ? '결과보기' : '다음'),
+                        onPressed: () => controller.isLast
+                            ? controller.quizIndex
+                            : controller.quizIndex++,
+                        style: ElevatedButton.styleFrom(
+                          fixedSize: Size(
+                            MyAppController.to.menuButtonWidth,
+                            MyAppController.to.menuButtonHeight,
+                          ),
+                        ),
                       ),
                     ),
                   ],
                 ),
+        ),
+      ),
+    );
+  }
+
+  quizAnswerButton(int number, String text) {
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: ElevatedButton(
+        onPressed: () => controller.selector = number,
+        child: Text('$number번. $text'),
+        style: ElevatedButton.styleFrom(
+          fixedSize: Size(
+            MyAppController.to.menuButtonWidth,
+            MyAppController.to.menuButtonHeight,
+          ),
+          primary: controller.selector == number ? Colors.yellow : Colors.white,
+          shadowColor: Colors.yellow,
+          elevation: 10,
         ),
       ),
     );

@@ -7,6 +7,7 @@ class QuizModel {
   final String d4;
   final int answer;
   final isChecked = false;
+  int selector = 0;
 
   QuizModel({
     required this.seq,

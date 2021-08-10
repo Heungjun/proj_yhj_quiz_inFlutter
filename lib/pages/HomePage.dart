@@ -14,13 +14,13 @@ class HomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(),
-          _MenuButton('로그인', '/quiz'),
+          _MenuButton('로그인', '/setting'),
           SizedBox(height: 10),
           _MenuButton('문제풀기', '/quiz'),
           SizedBox(height: 10),
-          _MenuButton('문제관리', 'setting'),
+          _MenuButton('문제관리', '/setting'),
           SizedBox(height: 10),
-          _MenuButton('설정', 'setting'),
+          _MenuButton('설정', '/setting'),
         ],
       ),
     );
