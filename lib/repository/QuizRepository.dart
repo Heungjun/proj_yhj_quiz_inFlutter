@@ -6,7 +6,8 @@ class QuizRepository extends GetConnect {
 
   @override
   void onInit() {
-    httpClient.baseUrl = 'http://192.168.0.5:7129';
+    // httpClient.baseUrl = 'http://192.168.0.5:7129';
+    httpClient.baseUrl = 'http://115.22.153.32:80';
     super.onInit();
   }
 

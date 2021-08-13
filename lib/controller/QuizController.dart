@@ -42,4 +42,12 @@ class QuizController extends GetxController {
     lastIndex = quizzes.length - 1;
     _isInit(true);
   }
+
+  int getCorrectCount() {
+    int count = 0;
+
+    for (int i = 0; i <= lastIndex; i++)
+      if (quizzes[i].selector == quizzes[i].answer) count++;
+    return count;
+  }
 }

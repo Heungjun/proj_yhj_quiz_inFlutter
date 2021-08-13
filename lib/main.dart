@@ -4,6 +4,7 @@ import 'package:yhj_quiz_flutter/controller/MyAppController.dart';
 import 'package:yhj_quiz_flutter/controller/QuizController.dart';
 import 'package:yhj_quiz_flutter/pages/HomePage.dart';
 import 'package:yhj_quiz_flutter/pages/QuizPage.dart';
+import 'package:yhj_quiz_flutter/pages/QuizResultPage.dart';
 import 'package:yhj_quiz_flutter/pages/SettingPage.dart';
 
 void main() {
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
             () => Get.lazyPut<QuizController>(() => QuizController()),
           ),
         ),
+        GetPage(name: '/quizResult', page: () => QuizResultPage()),
         GetPage(name: '/setting', page: () => SettingPage()),
       ],
     );

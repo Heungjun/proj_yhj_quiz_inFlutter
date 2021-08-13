@@ -54,7 +54,10 @@ class QuizPage extends GetView<QuizController> {
                       child: ElevatedButton(
                         child: Text(controller.isLast ? '결과보기' : '다음'),
                         onPressed: () => controller.isLast
-                            ? controller.quizIndex
+                            ? Get.offAllNamed('/quizResult', parameters: {
+                                'count': '${controller.lastIndex + 1}',
+                                'correct': '${controller.getCorrectCount()}'
+                              })
                             : controller.quizIndex++,
                         style: ElevatedButton.styleFrom(
                           fixedSize: Size(
