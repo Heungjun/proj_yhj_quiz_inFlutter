@@ -8,7 +8,7 @@ class QuizPage extends GetView<QuizController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.find<QuizController>();
+    // Get.find<QuizController>();
     return Scaffold(
       body: Obx(
         () => Center(
